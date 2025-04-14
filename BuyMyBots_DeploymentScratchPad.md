@@ -8,31 +8,43 @@ Use this file to track **project-specific variables** needed for deploying a sta
 ## 🌐 Domain Information
 
 - **Primary Domain Name (Apex)**:
-  - Example: `myprojectsite.com`
+  - Example: `BuyMyBots.com`
 
 - **Subdomain(s)**:
-  - Example: `www.myprojectsite.com`
+  - Example: `www.buymybots.com`
 
 ---
 
 ## 🪣 S3 Bucket Configuration
 
 - **S3 Bucket Name**:
-  - Must match your apex domain exactly: `myprojectsite.com`
+  - Must match your apex domain exactly: `buymybots.com`
 
 - **AWS Region**:
   - Example: `us-east-2`
+
+  cd ~/Documents/BuyMyBots.com
+  bash
+  aws s3 sync . s3://buybybots.com --region us-east-2 --delete --acl bucket-owner-full-control
+
+- makes it public for the read, shortterm.
+  bash
+  aws s3 sync . s3://buymybots.com \
+    --region us-east-2 \
+    --delete \
+    --acl public-read
+
 
 ---
 
 ## 🔐 SSL Certificate (ACM)
 
 - **Requested Certificate Domains**:
-  - [ ] `myprojectsite.com`
-  - [ ] `www.myprojectsite.com`
+  - [ ] `buymybots.com`
+  - [ ] `www.buymybots.com`
 
 - **ACM Certificate ARN**:
-  - `arn:aws:acm:us-east-1:xxxxxxxxxxxx:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
+  - `arn:aws:cloudfront::380175143315:distribution/EXHYDT7OFIY3C`
 
 - **ACM Status**:
   - [ ] Pending Validation
@@ -99,7 +111,7 @@ Paste or reference the policy used (after replacing `yourdomain.com` and `distri
 ## 💻 GitHub
 
 - **Repo URL**:  
-  `https://github.com/YOUR_USERNAME/YOUR_REPOSITORY`
+  `https://github.com/TheLiteralCreative/buymybots.com`
 
 - **Git Status**:
   - [ ] Repo initialized
@@ -110,7 +122,7 @@ Paste or reference the policy used (after replacing `yourdomain.com` and `distri
 
 ## 🧪 Final Testing Notes
 
-- [ ] `https://www.myprojectsite.com` loads successfully
+- [ ] `https://www.buymybots.com` loads successfully
 - [ ] Redirects from `http://` and apex domain work
 - [ ] SSL valid for all domains
 - [ ] JS/CSS files render without error

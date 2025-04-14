@@ -38,6 +38,9 @@ ls
 
 ## 🔁 Step 2: Initialize Git and Push to GitHub
 
+# Step into your project folder (if not already there)
+cd ~/Documents/AWS_A3-Builds-in-Process/Project
+
 ### CLI:
 ```bash
 git init
