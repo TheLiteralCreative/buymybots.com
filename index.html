@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BuyMyBots.com Storefront</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>BuyMyBots - Archive</title>
+  <link rel="stylesheet" href="styles.css">
   <script src="https://unpkg.com/papaparse@5.3.1/papaparse.min.js"></script>
-  <script src="products_csv.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
   <header>
     <h1>Buy My Bots</h1>
+    <input type="text" id="searchBox" placeholder="Search bots by name, team, or class..." />
   </header>
-
   <main>
     <div id="product-gallery"></div>
+    <div id="pagination-controls"></div>
   </main>
-
-  <footer>
-    <p>© 2025 LiteralCreative. All rights reserved.</p>
-  </footer>
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="modal-close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
 </body>
 </html>
