@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
-  fetch('https://buymybots.com/inventory.csv')
+  fetch('inventory.csv')
     .then(response => response.text())
     .then(csv => {
       const data = Papa.parse(csv, { header: true }).data;
@@ -8,20 +8,30 @@ window.addEventListener('DOMContentLoaded', () => {
       data.forEach(item => {
         const div = document.createElement('div');
         div.className = 'product-card';
+
+        const imgSrc = item.Images !== "Unavailable" ? item.Images : "https://via.placeholder.com/300x200?text=No+Image";
+
         div.innerHTML = `
-          <img src="${item.Images}" alt="${item.Character}" style="max-width:100%; border-radius:10px; margin-bottom:0.5rem;">
+          <img src="${imgSrc}" alt="${item.Character}">
           <h3>${item.Character}</h3>
           <p><strong>Alt Mode:</strong> ${item["Alt Mode"]}</p>
           <p><strong>Team:</strong> ${item.Team}</p>
           <p><strong>Series:</strong> ${item.Series} (${item.Edition})</p>
           <p><strong>Class:</strong> ${item.Class}</p>
-          <p><small>Maker: ${item.Maker} • Country: ${item.Country}</small></p>
-          <p><small>SKU: ${item.SKU} • Packaging: ${item.Packaging} • Date: ${item.Date}</small></p>
+          <small>Maker: ${item.Maker} • Country: ${item.Country}</small>
+          <small>SKU: ${item.SKU} • Packaging: ${item.Packaging} • Date: ${item.Date}</small>
+          <div class="price-info">
+            <p><strong>Sold On eBay:</strong> ${item["Ebay $old"]}</p>
+            <p><strong>Your Price:</strong> ${item["4 $ale"]}</p>
+            <p><strong>Current eBay Avg:</strong> ${item["Ebay $"]}</p>
+          </div>
         `;
-        
-        console.log("Parsed CSV Row:", data[0]);
 
+        console.log("🧾 Rendering:", item.Character);
         gallery.appendChild(div);
       });
+    })
+    .catch(error => {
+      console.error("❌ Failed to load inventory.csv", error);
     });
 });
